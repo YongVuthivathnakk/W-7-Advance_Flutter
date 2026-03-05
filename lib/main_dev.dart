@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:nested/nested.dart';
- 
+import 'package:week7/data/repositories/songs/user_history_repository.dart';
+
 import 'main_common.dart';
 import 'data/repositories/settings/app_settings_repository_mock.dart';
 import 'data/repositories/songs/song_repository.dart';
@@ -21,8 +22,11 @@ List<SingleChildWidget> get devProviders {
 
     // 3 - Inject the  app setting state
     ChangeNotifierProvider<AppSettingsState>(
-      create: (_) =>AppSettingsState(repository: appSettingsRepository)
+      create: (_) => AppSettingsState(repository: appSettingsRepository),
     ),
+
+    // 4 - Inject user history
+    Provider<UserHistoryRepository>(create: (_) => UserHistoryRepository()),
   ];
 }
 
